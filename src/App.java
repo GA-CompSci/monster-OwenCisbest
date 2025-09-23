@@ -3,6 +3,7 @@ public class App {
 
     public static Monster[] monsters;
     public static void main(String[] args) throws Exception {
+        
         System.out.println("Hello, World!");
 
 
@@ -14,22 +15,24 @@ public class App {
         for(int i = 0; i < monsters.length; i++){
             monsters[i] = new Monster(); //TODO: Add some specials
         }
-
-        /*Monster m1 = new Monster();
-        Monster m2 = new Monster();
-        int m1health = m1.health();
-        System.out.println("M1 health: " + m1.health());*/
-     
-     
+        // PERCENTAGE OF DEFEATED MONSTERS
+        double result = percentComplete();
+        System.out.println("You have defeated " + result + "%");
         int count = 0;
 
         for(Monster m : monsters){
             if(m.health() > 50) count++;
-
         }
         System.out.println(count + " of them have more than 50 health");
+        reportMonsters();
+    
+    
+    } 
+
+      
+     
         
-    }
+        
     /**
      * How many monsters have over the given health
      * @param health number to check
@@ -52,4 +55,19 @@ public class App {
         }
         return null;
     }
+
+    public static double percentComplete() {
+        return monsterCount(0) /monsters.length * 100;
+    }
+    public static void reportMonsters(){
+        for(Monster m : monsters){
+            System.out.println("Monster " + m + " has " + m.health() + " health.");
+            System.out.println("Monster " + m + " has " + m.damage() + " damage.");
+            System.out.println("Monster " + m + " has " + m.speed() + " speed.");
+            System.out.println("Monster " + m + " has " + m.special() + " special.");
+        }
+
+ 
+    }
+    
 }
