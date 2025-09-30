@@ -1,5 +1,13 @@
 import java.util.Scanner;
 public class App {
+    //CLASS VARIABGLE
+    private static Monster[] monsters;
+    //PLAYER STATS
+    private static int health = 100;
+    private static int speed = 10;
+    private static int shield = 50;
+    private static int damage = 50;
+    private static int heal = 50;
 
     public static Monster[] monsters;
     public static void main(String[] args) throws Exception {
@@ -54,6 +62,33 @@ public class App {
             if(monsters[i].health() > 0) return monsters[i];
         }
         return null;
+    }
+
+    // ---GAME LOOP ------
+    while(monsterCount(0) > 0){
+        System.out.println("--OPTIONS--");
+        System.out.println("1) Attack");
+        System.out.println("2) Defend");
+        System.out.println("3) Heal");
+        System.out.println("4) Pass");
+        System.out.print("Choice: ");
+        int choice = input.nextInt();
+        //ACTIONS
+        if(choice == 1) {
+            
+        }
+        else if(choice == 2){
+
+        }
+        else if(choice == 3){
+
+        }
+        else{
+
+        if(currentMonster.health() <= 0){
+
+        }    
+        }
     }
 
     public static double percentComplete() {

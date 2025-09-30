@@ -28,4 +28,9 @@ public class Monster {
     public double damage() {return this.damage;}
     public int speed() {return this.speed;}
     public String special() {return this.special;}
+
+    //MUTATOR METHODS
+    public void takeDamage(){
+
+    }
 }
