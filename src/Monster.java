@@ -33,4 +33,6 @@ public class Monster {
     public void takeDamage(){
 
     }
+    
 }
+
