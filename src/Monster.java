@@ -25,13 +25,13 @@ public class Monster {
 
     //ACCESSOR METHODS
     public int health(){return health; }
-    public double damage() {return this.damage;}
+    public double damage() {return Math.round(damage * 100) / 100;}
     public int speed() {return this.speed;}
     public String special() {return this.special;}
 
     //MUTATOR METHODS
-    public void takeDamage(){
-
+    public void takeDamage(int dmg){
+        health -= dmg;
     }
     
 }
