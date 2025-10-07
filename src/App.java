@@ -80,7 +80,7 @@ public class App {
                     health -= 10;
                 }
                 else currentMonster.takeDamage(dmg);
-                System.out.println("The monster has " + currentMonster.health() + " left.");
+                System.out.println("The monster has " + currentMonster.health() + " health left.");
             }
             else if(choice2 == 2){
                 isDefending = true;
@@ -102,7 +102,7 @@ public class App {
                 continue;
             }
             
-            int speedCheck = (int)(Math.random() * 100);
+            int speedCheck = (int)(Math.random() * 10);
             if(speedCheck >= speed) {
                 System.out.println("BONUS TURN!");
                 continue;
@@ -154,8 +154,23 @@ public class App {
         return null;
     }
 
+    /*public static Monster getWeakestMonster() {
+        int count = 0;
+        int lowesthealth = 1000;
+        for(Monster s : monsters){
+            if(s.health() < lowesthealth){
+                lowesthealth = s.health(); 
+                weakestmonster = s;
+                count++;
+                
+            } 
+            else count++;
+        }
+        return ;
+    }*/
+
     public static double percentComplete() {
-        return monsterCount(0) /monsters.length * 100;
+        return (double)(100.0 - monsterCount(0)/monsters.length * 100.0);
     }
     public static void reportMonsters(){
         int i = 1;
@@ -168,11 +183,18 @@ public class App {
             System.out.println("Monster " + i + " has " + m.damage() + " damage.");
             System.out.println("Monster " + i + " has " + m.speed() + " speed.");
             System.out.println("Monster " + i + " has " + m.special() + " special.");
+            System.out.println("You have " + health + " health left.");
             i++;                
             }
+        int starcount = Math.max(0, (health/5));
+        String stars = "*".repeat(starcount);
+        String dashes = "-".repeat(20-starcount);
+        System.out.println("[" + stars + dashes + "]");
 
         }
 
+    //health bars
+    
  
     }
     
