@@ -87,7 +87,9 @@ public class App {
                 System.out.println("SHIELD UP!");
             }
             else if(choice2== 3){
-                int h = (int)(Math.random() + heal + 1);
+                // heal for a random amount between 1 and `heal` (inclusive)
+                // use Math.max to ensure we don't multiply by 0 which can produce constant results
+                int h = (int)(Math.random() * Math.max(1, heal)) + 1;
                 health += h;
                 System.out.println("You healed for " + h + " points");
             }
@@ -109,10 +111,15 @@ public class App {
             }
             else{
                 int incomingDamage = (int)(Math.random() * currentMonster.damage() + 1);
+                int originalIncoming = incomingDamage;
                 if(isDefending){
-                    incomingDamage -= shield;
+                    // actual absorbed amount is the lesser of shield and the incoming damage
+                    int absorbed = Math.min(shield, originalIncoming);
+                    incomingDamage -= absorbed;
                     if(incomingDamage < 0) incomingDamage = 0;
-                    System.out.println("CLANG! Your shield absorbed " + shield + " damage.");
+                    System.out.println("CLANG! Your shield absorbed " + absorbed + " damage.");
+                    // defending only lasts for one incoming attack
+                    isDefending = false;
                 }
                 health -= incomingDamage;
             }
@@ -183,14 +190,14 @@ public class App {
             System.out.println("Monster " + i + " has " + m.damage() + " damage.");
             System.out.println("Monster " + i + " has " + m.speed() + " speed.");
             System.out.println("Monster " + i + " has " + m.special() + " special.");
-            System.out.println("You have " + health + " health left.");
+            
             i++;                
             }
         int starcount = Math.max(0, (health/5));
         String stars = "*".repeat(starcount);
         String dashes = "-".repeat(20-starcount);
         System.out.println("[" + stars + dashes + "]");
-
+        System.out.println("You have " + health + " health left.");
         }
 
     //health bars
