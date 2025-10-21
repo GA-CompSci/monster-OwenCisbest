@@ -34,16 +34,16 @@ public class NumSet {
         shuffle(randArray);
         
         // shuffle randomizes an Integer ArrayList (then calls printPretty)
-        //shuffle(randArrL);
+        shuffle(randArrL);
         
         // divide all numbers by two
         divByTwo(randArray);
         divByTwo(randArrL);
         
         //sumArray
-        /*sumArray(randArray);
+        sumArray(randArray);
         sumArray(randArrL);
-        */
+        
     }
     /*
     ROUND 1 code
@@ -117,20 +117,32 @@ public class NumSet {
         }
         
         System.out.println("");
-        System.out.println("Shuffle for int[]:");
+        System.out.println("shuffle for int[]:");
         printPretty(arr);    
         return arr;    
     } 
     
     // TODO: shuffle ArrayList
-    public static ArrayList<Integer> shuffleList(ArrayList<Integer> arr){
+    public static ArrayList<Integer> shuffle(ArrayList<Integer> arr){
         int newNum = 0;
         int random = 0;
-        /*for(int i = 0; i < arr.size(); i++){
-            random = (int)((Math.random() * arr.size()) + 1);
-            newNum = arr.get(random);
+        ArrayList<Integer> tempArray = new ArrayList<>();
+        for(int i = 1; i < (arr.size() -1); i++){
+            //pick random index location
+            random = (int)((Math.random() * arr.size()-1) + 1);
+            
+            //copy arr[random] to a temp location
+            tempArray.add(arr.get(random));
+            //move arr[i] to arr[random]
+            arr.set(random, arr.get(i));
+            //move temp to arr[i]
+            newNum = tempArray.get(0);
+            tempArray.remove(0);
+            arr.set(i, newNum);
         }
-        printPretty(arr);*/
+        System.out.println("");
+        System.out.println("shuffle for ArrayList<>:");
+        printPretty(arr);
         return arr;
     }
     // TODO: divByTwo (overloaded)
@@ -145,7 +157,7 @@ public class NumSet {
         printPretty(newArr);
         return newArr;
     }
-    
+    //Second part (The Overload)
     public static ArrayList<Integer> divByTwo(ArrayList<Integer> arr){
         ArrayList<Integer> newArr = new ArrayList<>();
         for(int num : arr){
@@ -159,4 +171,21 @@ public class NumSet {
     }
     
     // TODO: sumArray (overloaded)
+    public static int sumArray(int[] arr){
+        int sum = 0;
+        for(int i = 0; i < arr.length; i++){
+            sum+=arr[i];
+        }
+        System.out.println("The sum of the array is: " + sum); 
+        return sum;
+    }
+
+    public static int sumArray(ArrayList<Integer> arr){
+        int sum = 0;
+        for(int num : arr){
+            sum += num;
+        }
+        System.out.println("The sum of the array is: " + sum); 
+        return sum;
+    }
 }
