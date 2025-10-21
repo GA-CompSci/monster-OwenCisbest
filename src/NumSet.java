@@ -33,7 +33,7 @@ public class NumSet {
         // shuffle randomizes an int array (then calls printPretty)
         shuffle(randArray);
         
-        // shuffle randomizes an Integer ArrayList (then calls printPretty)
+        /*// shuffle randomizes an Integer ArrayList (then calls printPretty)
         shuffle(randArrL);
         
         // divide all numbers by two
@@ -43,7 +43,7 @@ public class NumSet {
         //sumArray
         sumArray(randArray);
         sumArray(randArrL);
-        
+        */
     }
     /*
     ROUND 1 code
@@ -60,23 +60,56 @@ public class NumSet {
     }
     
     // TODO: randArrL
-    
+    public static ArrayList<Integer> randArrL(int length, int low, int high){
+        ArrayList<Integer> result = new ArrayList<>();
+        for(int i = 0; i < length; i++){
+            int rand = (int)(Math.random() * (high - low + 1)) + low;
+            result.add(rand);
+        }
+        return result;
+    }
     
     
     // TODO: compareNums
+    public static int compareNums(int[] array, ArrayList<Integer> arraylist){
+        int count = 0;
+        int smallestlength = 0;
+        if(arraylist.size() < array.length) smallestlength = arraylist.size();
+        else smallestlength = array.length;
+
+        for(int i = 0; i < smallestlength; i++){
+            if(arraylist.get(i) == array[i]) count++; 
+        }
+    return count;
+    }
     
     
     // TODO: prettyPretty (overloaded)
-    
+    public static void printPretty(int[] arr){
+        for(int i = 0; i < arr.length; i++){
+            System.out.println("The number at position " + i + " is " + arr[i]);
+        }
+
+    }
     /*
     ROUND 2 code
     */
-    
+    public static void printPretty(ArrayList<Integer> arr){
+        for(int i = 0; i < arr.size(); i++){
+        System.out.println("The number at position " + i + " is " + arr.get(i));
+    }
+}
     // TODO: shuffle array
-    
+    public static void shuffle(int[] arr){
+        for(int i = 0; i < arr.length; i++){
+            //pick random index location
+            //copy arr[random] to a temp location
+            //move arr[i] to arr[random]
+            //move temp to arr[i]
+        } 
+    } 
     
     // TODO: shuffle ArrayList
-    
     
     // TODO: divByTwo (overloaded)
     
