@@ -33,15 +33,15 @@ public class NumSet {
         // shuffle randomizes an int array (then calls printPretty)
         shuffle(randArray);
         
-        /*// shuffle randomizes an Integer ArrayList (then calls printPretty)
-        shuffle(randArrL);
+        // shuffle randomizes an Integer ArrayList (then calls printPretty)
+        //shuffle(randArrL);
         
         // divide all numbers by two
         divByTwo(randArray);
         divByTwo(randArrL);
         
         //sumArray
-        sumArray(randArray);
+        /*sumArray(randArray);
         sumArray(randArrL);
         */
     }
@@ -100,19 +100,63 @@ public class NumSet {
     }
 }
     // TODO: shuffle array
-    public static void shuffle(int[] arr){
-        for(int i = 0; i < arr.length; i++){
+    public static int[] shuffle(int[] arr){
+        int random = 0;
+        int [] tempArray = {1, 1, 1};
+        int [] shuffledArray = {};
+        for(int i = 1; i < (arr.length -1); i++){
             //pick random index location
+            random = (int)((Math.random() * arr.length-1) + 1);
+            
             //copy arr[random] to a temp location
+            tempArray[0] = arr[random];
             //move arr[i] to arr[random]
+            arr[random] = arr[i];
             //move temp to arr[i]
-        } 
+            arr[i] = tempArray[0];
+        }
+        
+        System.out.println("");
+        System.out.println("Shuffle for int[]:");
+        printPretty(arr);    
+        return arr;    
     } 
     
     // TODO: shuffle ArrayList
-    
+    public static ArrayList<Integer> shuffleList(ArrayList<Integer> arr){
+        int newNum = 0;
+        int random = 0;
+        /*for(int i = 0; i < arr.size(); i++){
+            random = (int)((Math.random() * arr.size()) + 1);
+            newNum = arr.get(random);
+        }
+        printPretty(arr);*/
+        return arr;
+    }
     // TODO: divByTwo (overloaded)
+    public static int[] divByTwo(int[] arr){
+        int[] newArr = new int[arr.length];
+        for(int i = 0; i < arr.length - 1; i++){
+            newArr[i] = (arr[i]/2);
+        }
+        
+        System.out.println("");
+        System.out.println("divByTwo for int[]:");       
+        printPretty(newArr);
+        return newArr;
+    }
     
+    public static ArrayList<Integer> divByTwo(ArrayList<Integer> arr){
+        ArrayList<Integer> newArr = new ArrayList<>();
+        for(int num : arr){
+            newArr.add(num/2);
+        }
+        
+        System.out.println("");
+        System.out.println("divByTwo for ArrayList<>:");
+        printPretty(newArr);
+        return newArr;
+    }
     
     // TODO: sumArray (overloaded)
 }
